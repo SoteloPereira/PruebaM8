@@ -16,12 +16,32 @@ pipeline {
       }
     }
 
+    stage('Run Tests') {
+      steps {
+        script {
+          sh 'npm test'
+        }
+      }
+    }
+
     stage('Start Server 🖥️') {
       steps {
         script {
-          sh 'node app.js'
+          sh 'node server.js'
         }
       }
+    }
+  }
+
+  post {
+    always {
+      echo 'Pipeline completo'
+    }
+    success {
+      echo 'Las pruebas pasaron'
+    }
+    failure {
+      echo 'Las pruebas fallaron'
     }
   }
 }
