@@ -18,4 +18,5 @@ app.get('/users/:id', (req, res) => {
   }
 });
 
+app.listen(3040, console.log('✅ Servidor corriendo en el puerto: 3040'));
 module.exports = app;

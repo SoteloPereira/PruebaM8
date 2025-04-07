@@ -1,0 +1,27 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Clone Repository') {
+      steps {
+        git 'https://github.com/SoteloPereira/PruebaM8.git'
+      }
+    }
+
+    stage('Install Dependencies') {
+      steps {
+        script {
+          sh 'npm install'
+        }
+      }
+    }
+
+    stage('Start Server 🖥️') {
+      steps {
+        script {
+          sh 'node app.js'
+        }
+      }
+    }
+  }
+}
